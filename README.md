@@ -8,7 +8,7 @@ This repository includes a new upload handler to manage zip files. The upload ha
 
 1. **Upload a Zip File**
 
-   To upload a zip file, use the `upload_zip` function from the `upload_handler.py` file. This function moves the zip file to the `uploads` directory.
+   To upload a zip file, use the `upload_zip` function from the `upload_handler.py` file. This function moves the zip file to the root directory.
 
    ```python
    from upload_handler import upload_zip
@@ -19,23 +19,23 @@ This repository includes a new upload handler to manage zip files. The upload ha
 
 2. **Unzip the Uploaded File**
 
-   To unzip the uploaded file, use the `unzip_file` function from the `upload_handler.py` file. This function extracts the contents of the zip file into the `uploads` directory.
+   To unzip the uploaded file, use the `unzip_file` function from the `upload_handler.py` file. This function extracts the contents of the zip file into the root directory.
 
    ```python
    from upload_handler import unzip_file
 
-   file_path = 'uploads/file.zip'
+   file_path = 'file.zip'
    unzip_file(file_path)
    ```
 
 3. **Delete the Zip File**
 
-   To delete the zip file after extraction, use the `delete_zip` function from the `upload_handler.py` file. This function removes the zip file from the `uploads` directory.
+   To delete the zip file after extraction, use the `delete_zip` function from the `upload_handler.py` file. This function removes the zip file from the root directory.
 
    ```python
    from upload_handler import delete_zip
 
-   file_path = 'uploads/file.zip'
+   file_path = 'file.zip'
    delete_zip(file_path)
    ```
 
