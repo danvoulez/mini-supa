@@ -3,7 +3,7 @@ name: Unzip and Delete Uploaded Zip File
 on:
   push:
     paths:
-      - 'uploads/*.zip'
+      - '*.zip'
 
 jobs:
   unzip:
@@ -15,10 +15,10 @@ jobs:
 
     - name: Unzip uploaded file
       run: |
-        for file in uploads/*.zip; do
-          unzip -o "$file" -d "uploads/"
+        for file in *.zip; do
+          unzip -o "$file" -d "./"
         done
 
     - name: Delete zip file
       run: |
-        rm uploads/*.zip
+        rm *.zip
