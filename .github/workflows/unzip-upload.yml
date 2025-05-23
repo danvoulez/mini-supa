@@ -1,9 +1,9 @@
-name: Unzip and Delete Uploaded Zip File
+name: Unzip All Root Zip Files
 
 on:
   push:
-    paths:
-      - '*.zip'
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   unzip:
@@ -13,12 +13,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Unzip uploaded file
+    - name: Unzip all zip files in root if present
       run: |
+        shopt -s nullglob
         for file in *.zip; do
+          echo "Unzipping $file"
           unzip -o "$file" -d "./"
         done
 
-    - name: Delete zip file
+    - name: Delete zip file(s) in root if present
       run: |
-        rm *.zip
+        shopt -s nullglob
+        for file in *.zip; do
+          echo "Deleting $file"
+          rm "$file"
+        done
