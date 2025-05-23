@@ -44,3 +44,5 @@ This repository includes a new upload handler to manage zip files. The upload ha
 A GitHub Action workflow file `unzip-upload.yml` has been added to automate the process of unzipping and deleting uploaded zip files. The workflow triggers on push events, waits for the uploaded zip file, unzips the file, and deletes the zip file. It also includes error handling and retries for the unzip step.
 
 The workflow file is located in the `.github/workflows` directory.
+
+The workflow also includes steps to install the `transformers` library, download a pre-trained LLM model from Hugging Face, and use the LLM model to process files. This enhances the functionality of the workflow by leveraging the capabilities of the LLM model.

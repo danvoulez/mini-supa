@@ -13,6 +13,31 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Install transformers library
+      run: pip install transformers
+
+    - name: Download pre-trained LLM model
+      run: |
+        mkdir -p models
+        python -c "from transformers import AutoModel; AutoModel.from_pretrained('bert-base-uncased').save_pretrained('models/bert-base-uncased')"
+
+    - name: Use LLM model to process files
+      run: |
+        python -c "
+import os
+from transformers import AutoModel, AutoTokenizer
+
+model_dir = 'models/bert-base-uncased'
+tokenizer = AutoTokenizer.from_pretrained(model_dir)
+model = AutoModel.from_pretrained(model_dir)
+
+# Example processing: Tokenize and encode a sample text
+sample_text = 'Hello, world!'
+inputs = tokenizer(sample_text, return_tensors='pt')
+outputs = model(**inputs)
+print(outputs)
+"
+
     - name: Unzip all zip files in root if present
       run: |
         shopt -s nullglob
